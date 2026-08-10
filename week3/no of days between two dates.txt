@@ -1,0 +1,42 @@
+class Solution {
+    public int daysBetweenDates(String date1, String date2) {
+        return Math.abs(countDays(date1) - countDays(date2));
+    }
+
+    public int countDays(String date) {
+        String[] s = date.split("-");
+
+        int year = Integer.parseInt(s[0]);
+        int month = Integer.parseInt(s[1]);
+        int day = Integer.parseInt(s[2]);
+
+        int[] days = {31, 28, 31, 30, 31, 30,
+                      31, 31, 30, 31, 30, 31};
+
+        int total = 0;
+
+        for (int y = 1971; y < year; y++) {
+            if (isLeap(y))
+                total += 366;
+            else
+                total += 365;
+        }
+
+        for (int m = 1; m < month; m++) {
+            total += days[m - 1];
+
+            if (m == 2 && isLeap(year)) {
+                total++;
+            }
+        }
+
+        total += day;
+
+        return total;
+    }
+
+    public boolean isLeap(int year) {
+        return (year % 400 == 0) ||
+               (year % 4 == 0 && year % 100 != 0);
+    }
+}
