@@ -1,0 +1,35 @@
+import java.util.*;
+
+class Result {
+
+    public static List<Integer> maxSubarray(List<Integer> arr) {
+        int maxEnding = arr.get(0);
+        int maxSubarray = arr.get(0);
+
+        int maxSubsequence = 0;
+        int maxElement = arr.get(0);
+
+        for (int i = 0; i < arr.size(); i++) {
+            int num = arr.get(i);
+
+            if (i > 0) {
+                maxEnding = Math.max(num, maxEnding + num);
+                maxSubarray = Math.max(maxSubarray, maxEnding);
+            }
+
+            if (num > 0) {
+                maxSubsequence += num;
+            }
+
+            maxElement = Math.max(maxElement, num);
+        }
+
+        if (maxSubsequence == 0) {
+            maxSubsequence = maxElement;
+        }
+
+        return Arrays.asList(maxSubarray, maxSubsequence);
+    }
+}
+output.10 10
+10 11
