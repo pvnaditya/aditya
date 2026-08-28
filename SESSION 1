@@ -1,0 +1,29 @@
+public class ConstraintDrivenDesign {
+    public static void main(String[] args) {
+
+        // Constraints
+        int budget = 50000;
+        int timeAvailable = 60; // days
+        int requiredUsers = 1000;
+
+        // Proposed solution
+        int projectCost = 40000;
+        int developmentTime = 45; // days
+        int supportedUsers = 1500;
+
+        // Check whether all constraints are satisfied
+        if (projectCost <= budget &&
+            developmentTime <= timeAvailable &&
+            supportedUsers >= requiredUsers) {
+
+            System.out.println("Solution Accepted!");
+            System.out.println("All constraints are satisfied.");
+
+        } else {
+            System.out.println("Solution Rejected!");
+            System.out.println("Constraints are not satisfied.");
+        }
+    }
+}
+output.Solution Accepted!
+All constraints are satisfied.
